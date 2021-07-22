@@ -5,20 +5,33 @@ class NegociationController {
         this._inputValue = $('#value');
         this._inputDate = $('#date');
         this._inputAmount = $('#amount');
+        this._listNegociations = new ListNegociations();
     }
 
     toAdd(event) {
         event.preventDefault();
 
-        let date = DateHelper.textToDate(this._inputDate.value);
+        let negociation = this._createNegociation();
+        
+        this._listNegociations.toAdd(negociation);
+        this._clearForm();
+        console.log(this._listNegociations.negociations);
+    }
 
-        let negociation = new Negociation(
+    _createNegociation() {
+
+        let date = DateHelper.textToDate(this._inputDate.value);
+        return new Negociation(
             date,
             this._inputAmount.value,
             this._inputValue.value
         );
+    }
 
-        console.log(negociation);
-        console.log(DateHelper.dateToText(negociation.date));
+    _clearForm() {
+        this._inputDate.value = '';
+        this._inputAmount.value = 1;
+        this._inputValue.value = 0.0;
+        this._inputDate.focus();
     }
 }
