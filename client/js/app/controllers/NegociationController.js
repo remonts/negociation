@@ -10,8 +10,7 @@ class NegociationController {
     toAdd(event) {
         event.preventDefault();
 
-        let helper = new DateHelper();
-        let date = helper.textToDate(this._inputDate.value);
+        let date = DateHelper.textToDate(this._inputDate.value);
 
         let negociation = new Negociation(
             date,
@@ -20,6 +19,6 @@ class NegociationController {
         );
 
         console.log(negociation);
-        console.log(helper.dateToText(negociation.date));
+        console.log(DateHelper.dateToText(negociation.date));
     }
 }
