@@ -9,18 +9,17 @@ class NegociationController {
 
     toAdd(event) {
         event.preventDefault();
-        
-        let data = new Date(
-            ...this._inputDate.value
-                    .split('-')
-                    .map((item, indice) => item - indice % 2)
-        );
 
-        let negociacao = new Negociation(
-            data,
+        let helper = new DateHelper();
+        let date = helper.textToDate(this._inputDate.value);
+
+        let negociation = new Negociation(
+            date,
             this._inputAmount.value,
             this._inputValue.value
         );
-        console.log(negociacao);
+
+        console.log(negociation);
+        console.log(helper.dateToText(negociation.date));
     }
 }
