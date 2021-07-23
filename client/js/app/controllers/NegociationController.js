@@ -6,16 +6,17 @@ class NegociationController {
         this._inputDate = $('#date');
         this._inputAmount = $('#amount');
         this._listNegociations = new ListNegociations();
+        this._negociationsView = new NegociationsView($('#negociations-view'));
+        this._negociationsView.update(this._listNegociations);
     }
 
     toAdd(event) {
         event.preventDefault();
 
         let negociation = this._createNegociation();
-        
         this._listNegociations.toAdd(negociation);
+        this._negociationsView.update(this._listNegociations);
         this._clearForm();
-        console.log(this._listNegociations.negociations);
     }
 
     _createNegociation() {
