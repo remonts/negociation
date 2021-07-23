@@ -30,6 +30,10 @@ class NegociationsView {
         </tbody>
         
         <tfoot>
+            <td colspan="3"></td>
+            <td>
+                ${model.negociations.reduce((total, n) => total + n.size, 0.0)}
+            </td>
         </tfoot>
         </table> 
         `;
