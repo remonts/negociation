@@ -8,6 +8,8 @@ class NegociationController {
         this._listNegociations = new ListNegociations();
         this._negociationsView = new NegociationsView($('#negociations-view'));
         this._negociationsView.update(this._listNegociations);
+        this._message = new Message();
+        this._messageView = new MessageView();
     }
 
     toAdd(event) {
@@ -15,6 +17,7 @@ class NegociationController {
 
         let negociation = this._createNegociation();
         this._listNegociations.toAdd(negociation);
+        this._message.text = 'Negociação adicionada com sucesso';
         this._negociationsView.update(this._listNegociations);
         this._clearForm();
     }
