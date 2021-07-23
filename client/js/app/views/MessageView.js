@@ -1,4 +1,4 @@
-class MessageView {
+class MessageView extends View {
 
     constructor(element) {
         this._element = element;
